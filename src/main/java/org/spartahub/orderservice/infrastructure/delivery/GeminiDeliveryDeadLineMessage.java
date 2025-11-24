@@ -43,7 +43,7 @@ public class GeminiDeliveryDeadLineMessage implements DeliveryDeadLineMessage {
         params.put("staff_email", "kdk@sparta.world");
 
         return client.prompt()
-                .system(s -> s.text(template, StandardCharsets.UTF_8)
+                .user(s -> s.text(template, StandardCharsets.UTF_8)
                         .params(params))
                 .call()
                 .content();
