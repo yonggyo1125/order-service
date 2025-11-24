@@ -33,6 +33,7 @@ public class GeminiDeliveryDeadLineMessage implements DeliveryDeadLineMessage {
         params.put("order_no", 1);
         params.put("orderer_name", "김말숙");
         params.put("orderer_email", "msk@seafood.world");
+        params.put("estimate_time", "36시간");
         params.put("order_date", "2025-12-08 10:00:00");
         params.put("order_products", "마른 오징어 50박스");
         params.put("order_memo", "12월 12일 3시까지는 보내주세요!");
