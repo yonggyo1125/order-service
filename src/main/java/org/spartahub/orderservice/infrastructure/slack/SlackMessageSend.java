@@ -36,7 +36,6 @@ public class SlackMessageSend implements MessageSend {
                     .retrieve()
                     .toEntity(JsonNode.class);
             JsonNode node = response.getBody();
-            System.out.println("응답: " + response);
             if (!response.getStatusCode().is2xxSuccessful() || node.get("ok") == null || !Boolean.parseBoolean(node.get("ok").textValue())) return false;
 
             String channelId = node.get("channel").get("id").textValue();
