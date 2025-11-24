@@ -24,7 +24,7 @@ public class GeminiDeliveryDeadLineMessage implements DeliveryDeadLineMessage {
     @PostConstruct
     public void setup() {
         // 프롬프트 템플릿
-        template = new ClassPathResource("system.txt");
+        template = new ClassPathResource("prompt.txt");
     }
 
     @Override
