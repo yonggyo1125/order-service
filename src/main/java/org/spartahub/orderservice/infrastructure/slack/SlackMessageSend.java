@@ -36,7 +36,8 @@ public class SlackMessageSend implements MessageSend {
                     .retrieve()
                     .toEntity(JsonNode.class);
             JsonNode node = response.getBody();
-            if (!response.getStatusCode().is2xxSuccessful() || node.get("ok") == null || !Boolean.parseBoolean(node.get("ok").textValue())) return false;
+
+            if (!response.getStatusCode().is2xxSuccessful() ||  node.get("ok") == null || !node.get("ok").toString().equals("true")) return false;
 
             String channelId = node.get("channel").get("id").textValue();
             // Channel ID 처리 E
@@ -50,28 +51,11 @@ public class SlackMessageSend implements MessageSend {
                     .retrieve()
                     .toEntity(JsonNode.class);
 
-            return response.getStatusCode().is2xxSuccessful() && node.get("ok") != null && Boolean.parseBoolean(node.get("ok").textValue());
+            return response.getStatusCode().is2xxSuccessful() && node.get("ok") != null && node.get("ok").toString().equals("true");
             // 메세지 발송 처리 E
         }
 
 
         return false;
     }
-
-    //    @Override
-//    public boolean send(List<String> slackIds, String message) {
-//        ResponseEntity<Void> response = RestClient.builder()
-//                .baseUrl("https://hooks.slack.com/services/" + channelCode)
-//                .build()
-//                .post()
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .body(Map.of("text", message))
-//                .retrieve()
-//                .toBodilessEntity();
-//
-//        boolean result = response.getStatusCode().is2xxSuccessful();
-//        log.info("slack message sent: message - {}, result - {}", message, result ? "성공" : "실패");
-//
-//        return result;
-//    }
 }
