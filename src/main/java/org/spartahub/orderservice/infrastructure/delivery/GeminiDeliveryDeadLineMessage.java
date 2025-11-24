@@ -45,7 +45,6 @@ public class GeminiDeliveryDeadLineMessage implements DeliveryDeadLineMessage {
         params.put("arrival_address", message.arrivalAddress());
         params.put("staff", message.staffName());
         params.put("staff_email", message.staffEmail());
-
         return client.prompt()
                 .user(s -> s.text(template, StandardCharsets.UTF_8)
                         .params(params))
