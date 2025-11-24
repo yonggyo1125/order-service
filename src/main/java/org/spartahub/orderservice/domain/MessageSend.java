@@ -1,5 +1,7 @@
 package org.spartahub.orderservice.domain;
 
+import java.util.List;
+
 public interface MessageSend {
-    boolean send(String message);
+    boolean send(List<String> ids, String message);
 }

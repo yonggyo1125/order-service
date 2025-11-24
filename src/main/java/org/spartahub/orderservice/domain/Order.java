@@ -3,12 +3,15 @@ package org.spartahub.orderservice.domain;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 public class Order {
 
     public void sendDeliveryMessage(DeliveryDeadLineMessage generator, MessageSend messageSend) {
         // 주문 정보를 가지고 발송 시한 관련 추가 가공 처리 필요, 여기는 테스트 데이터로 대체
+        // 배송 담당자 목록에서 슬랙 아이디
+        List<String> slackIds = List.of("U09UD0T0D2T");
 
         DeadLineMessage _message = DeadLineMessage
                 .builder()
@@ -32,7 +35,7 @@ public class Order {
         }
 
         // slack 메세지 전송
-        messageSend.send(message);
+        messageSend.send(slackIds, message);
 
     }
 }
