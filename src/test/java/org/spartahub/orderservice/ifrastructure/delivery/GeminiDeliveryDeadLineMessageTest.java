@@ -22,6 +22,7 @@ public class GeminiDeliveryDeadLineMessageTest {
                 .builder()
                 .orderNo(UUID.randomUUID())
                 .ordererName("김말숙")
+                .ordererEmail("msk@seafood.world")
                 .orderDate(LocalDateTime.of(2025, 12, 8, 0, 0, 0))
                 .orderMemo("12월 12일 3시까지는 보내주세요!")
                 .startHub("경기 북부 센터")
